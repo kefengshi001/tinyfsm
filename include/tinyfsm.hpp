@@ -71,13 +71,25 @@ namespace tinyfsm
   template<typename S>
   struct _state_instance
   {
+    /* 等价于 typedef S value_type;  让 value_type 代表模板参数 S 的类型。*/
     using value_type = S;
-    using type = _state_instance<S>;
-    static S value;
+    
+    /* 等价于 typedef _state_instance<S> type;  定义一个类型别名 type，指向自己；
+       让别人能用 _state_instance<S>::type 来指代 _state_instance<S> 自身 */
+    using type = _state_instance<S>;  
+
+    /* 只是声明（declaration），告诉编译器 “这个类里有一个静态成员变量”。但它没有定
+       义（definition），也就是说编译器还没真正为它分配内存空间*/
+    static S value;         
   };
 
+
+  /* 定义一个静态成员变量 value，类型为 _state_instance<S>::value_type，即模板参数 S 的类型。 
+     typename 告诉编译器，typename 后面跟的标识符是一个类型，即 _state_instance<S>::value_type。
+     对所有模板类型 S，去定义一个 _state_instance<S>::value 静态变量。 */
+
   template<typename S>
-  typename _state_instance<S>::value_type _state_instance<S>::value;
+  typename _state_instance<S>::value_type _state_instance<S>::value;  
 
   // --------------------------------------------------------------------------
 

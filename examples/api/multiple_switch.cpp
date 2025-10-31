@@ -10,7 +10,13 @@
 #include <iostream>
 #include <stdlib.h> /* rand */
 
-template<int inum>
+
+// ----------------------------------------------------------------------------
+// 注意类模板参数和非类模板参数的区别
+// 类型模板参数（template<typename T>）
+// 非类型模板参数（像 int、char、bool 等）。
+// template<int inum> 表示这是一个 整数模板类
+template<int inum>  
 class Off; // forward declaration
 
 static void DumpState(int inum, const char * state, int on_counter, int defect_level) {

@@ -9,7 +9,7 @@ struct Toggle : tinyfsm::Event { };
 
 // ----------------------------------------------------------------------------
 // 2. State Machine Base Class Declaration
-//
+//派生类把自己作为模板参数传递给基类MooreMachine，从而创建一个特定类型的状态机Switch。
 struct Switch : tinyfsm::MooreMachine<Switch>
 {
   /* pure virtual reaction (override required in all states) */
@@ -34,6 +34,7 @@ struct Off : Switch
   void react(Toggle const &) override { transit<On>(); };
 };
 
+// 通过宏FSM_INITIAL_STATE(Switch, Off)来特化set_initial_state函数，将初始状态设置为Off
 FSM_INITIAL_STATE(Switch, Off)
 
 

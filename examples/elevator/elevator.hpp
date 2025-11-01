@@ -2,12 +2,13 @@
 #define ELEVATOR_HPP_INCLUDED
 
 #include <tinyfsm.hpp>
+#include <iostream>
 
 
 // ----------------------------------------------------------------------------
 // Event declarations
 //
-
+// 事件
 struct FloorEvent : tinyfsm::Event
 {
   int floor;
@@ -22,7 +23,7 @@ struct Alarm       : tinyfsm::Event { };
 // ----------------------------------------------------------------------------
 // Elevator (FSM base class) declaration
 //
-
+// 状态机
 class Elevator
 : public tinyfsm::Fsm<Elevator>
 {
@@ -35,7 +36,7 @@ class Elevator
 public:
 
   /* default reaction for unhandled events */
-  void react(tinyfsm::Event const &) { };
+  void react(tinyfsm::Event const &) { std::cout << "Elevator: ignoring event of type "<< std::endl;};
 
   virtual void react(Call        const &);
   virtual void react(FloorSensor const &);

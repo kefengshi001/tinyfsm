@@ -28,7 +28,7 @@ class Motor
 public:
 
   /* default reaction for unhandled events */
-  void react(tinyfsm::Event const &) { };
+  void react(tinyfsm::Event const &) { std::cout << "Motor: ignoring event" << std::endl ;};
 
   /* non-virtual declaration: reactions are the same for all states */
   void react(MotorUp   const &);

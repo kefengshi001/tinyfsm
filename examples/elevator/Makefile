@@ -87,7 +87,7 @@ $(EXE): $(OBJS)
 	$(SIZE) $@
 
 %.o: %.cpp
-	$(CXX) -c $(CXXFLAGS) -o $@ $<
+	$(CXX) -g -c $(CXXFLAGS) -o $@ $<
 
 clean:
 	$(RM) *.o

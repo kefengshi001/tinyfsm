@@ -51,6 +51,7 @@ void Motor::react(MotorDown const &) {
   transit<Down>();
 }
 
+
 int Motor::direction{0};
 
 
